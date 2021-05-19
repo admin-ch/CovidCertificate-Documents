@@ -1,14 +1,7 @@
 # Swiss Covid Certificate - Documents - WIP
 
-## Overview
+This repository is the landing page of the technical documentation of the swiss covid certificate. 
 
-## Architecture
-
-## Components
-
-## Data
-
-## Business rules
-
-## Source code repositories
+[API Doc](https://github.com/admin-ch/CovidCertificate-Apidoc)
+[Example](https://github.com/admin-ch/CovidCertificate-Examples)
 
