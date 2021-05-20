@@ -4,5 +4,5 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [API Doc](https://github.com/admin-ch/CovidCertificate-Apidoc)
 
-[Examples](https://github.com/admin-ch/CovidCertificate-Examples)
+[Data examples](https://github.com/admin-ch/CovidCertificate-Examples)
 
