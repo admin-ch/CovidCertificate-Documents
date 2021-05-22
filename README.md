@@ -10,3 +10,7 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [20210520 - Presentation technology and integration](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210520_CovidZertifikat_Presentation_Systems_Integration.pdf)
 
+## References
+
+[Information about covid certificate delivered by swiss Federal Office of Public Health (FOPH)](https://www.bag.admin.ch/covid-zertifikat)
+
