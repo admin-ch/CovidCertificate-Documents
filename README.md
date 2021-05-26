@@ -6,6 +6,8 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [API Scripts](https://github.com/admin-ch/CovidCertificate-Api-Scripts)
 
+[API CLI](https://github.com/admin-ch/CovidCertificate-Api-Cli)
+
 [Data examples](https://github.com/admin-ch/CovidCertificate-Examples)
 
 ## Meeting documents
