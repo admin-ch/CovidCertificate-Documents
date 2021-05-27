@@ -13,6 +13,7 @@ This repository is the landing page of the technical documentation of the swiss 
 ## Meeting documents
 
 [20210520 - Presentation technology and integration](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210520_CovidZertifikat_Presentation_Systems_Integration.pdf)
+
 [20210527 - Presentation systemintegration](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210527_CovidZertifikat_Presentation_System_Integration.pdf)
 
 ## References
