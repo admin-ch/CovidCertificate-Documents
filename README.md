@@ -14,6 +14,29 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [Release notes](https://github.com/admin-ch/CovidCertificate-ReleaseNotes)
 
+## Global architecture
+
+Here the global architecture of the COVID certificate system:
+
+![image](https://user-images.githubusercontent.com/319676/120176031-1bafd580-c207-11eb-856f-3f566fe81c27.png)
+
+## Source code of COVID certificate system
+
+Mobile apps:
+
+- [CovidCertificate-App-Android](https://github.com/admin-ch/CovidCertificate-App-Android)
+- [CovidCertificate-App-iOS](https://github.com/admin-ch/CovidCertificate-App-iOS)
+- [CovidCertificate-SDK-Android](https://github.com/admin-ch/CovidCertificate-SDK-Android)
+- [CovidCertificate-SDK-iOS](https://github.com/admin-ch/CovidCertificate-SDK-iOS)
+
+COVID certificate services: 
+
+- [CovidCertificate-App-Config-Service](https://github.com/admin-ch/CovidCertificate-App-Config-Service)
+- [CovidCertificate-Api-Gateway-Service](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service)
+- [CovidCertificate-Management-UI](https://github.com/admin-ch/CovidCertificate-Management-UI)
+- [CovidCertificate-Management-Service](https://github.com/admin-ch/CovidCertificate-Management-Service)
+- [CovidCertificate-Signing-Service](https://github.com/admin-ch/CovidCertificate-Signing-Service)
+
 ## Meeting documents
 
 [20210520 - Presentation technology and integration](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210520_CovidZertifikat_Presentation_Systems_Integration.pdf)
