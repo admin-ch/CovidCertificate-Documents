@@ -1,6 +1,7 @@
 # Swiss Covid Certificate - Documents
 
-This repository is the landing page of the technical documentation of the swiss covid certificate. 
+This repository is the landing page of the technical documentation of the swiss
+covid certificate.
 
 [API Doc](https://github.com/admin-ch/CovidCertificate-Apidoc)
 
@@ -29,7 +30,7 @@ Mobile apps:
 - [CovidCertificate-SDK-Android](https://github.com/admin-ch/CovidCertificate-SDK-Android)
 - [CovidCertificate-SDK-iOS](https://github.com/admin-ch/CovidCertificate-SDK-iOS)
 
-COVID certificate services: 
+COVID certificate services:
 
 - [CovidCertificate-App-Config-Service](https://github.com/admin-ch/CovidCertificate-App-Config-Service)
 - [CovidCertificate-Api-Gateway-Service](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service)
@@ -46,4 +47,3 @@ COVID certificate services:
 ## References
 
 [Information about covid certificate delivered by swiss Federal Office of Public Health (FOPH)](https://www.bag.admin.ch/covid-zertifikat)
-
