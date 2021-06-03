@@ -43,6 +43,8 @@ COVID certificate services:
 
 [20210527 - Presentation technology and integration - update 1](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210527_CovidZertifikat_Presentation_System_Integration.pdf)
 
+[20210603 - Presentation technology and integration - update 2](https://github.com/admin-ch/CovidCertificate-Documents/blob/main/20210603%20-%20Presentation%20technology%20and%20integration.pdf)
+
 ## References
 
 [Information about covid certificate delivered by swiss Federal Office of Public Health (FOPH)](https://www.bag.admin.ch/covid-zertifikat)
