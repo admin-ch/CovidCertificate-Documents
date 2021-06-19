@@ -8,6 +8,8 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [API CLI](https://github.com/admin-ch/CovidCertificate-Api-Cli)
 
+[Web Management UI doc](https://github.com/admin-ch/CovidCertificate-UIdoc)
+
 [Data examples](https://github.com/admin-ch/CovidCertificate-Examples)
 
 ## Release notes
