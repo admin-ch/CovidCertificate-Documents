@@ -18,7 +18,7 @@ This repository is the landing page of the technical documentation of the swiss 
 
 ## Health status record
 
-- 2021-06-20, from 0947 to 1018: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
+- 2021-06-20 / 09h47 to 10h18: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
 
 ## Global architecture
 
