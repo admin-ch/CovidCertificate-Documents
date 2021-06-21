@@ -24,7 +24,7 @@ This repository is the landing page of the technical documentation of the swiss 
 
 Here the global architecture of the COVID certificate system:
 
-![image](https://user-images.githubusercontent.com/319676/120176031-1bafd580-c207-11eb-856f-3f566fe81c27.png)
+![image](https://user-images.githubusercontent.com/319676/122657748-a3ce2e80-d166-11eb-8432-fe01549063db.png)
 
 ## Source code of COVID certificate system
 
