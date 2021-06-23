@@ -18,6 +18,7 @@ This repository is the landing page of the technical documentation of the swiss 
 
 ## Health status record
 
+- 2021-06-23 / 20h53 to 21h07: Covid certificate form not available.
 - 2021-06-23 / 14h42 to 15h11: Covid certificate system delivered a few errors. Retry was possible.
 - 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
 - 2021-06-20 / 09h47 to 10h18: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
