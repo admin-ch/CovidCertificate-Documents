@@ -1,13 +1,5 @@
 # Swiss Covid Certificate - Documents
 
----
-
-:warning:**SYSTEM HEALTH STATUS**:warning:
-
- We unfortunately encounter technical difficulties with the covid certificate system. We are really sorry and give everything to solve the problem as soon as possible.
-
---- 
-
 This repository is the landing page of the technical documentation of the swiss covid certificate. 
 
 [API Doc](https://github.com/admin-ch/CovidCertificate-Apidoc)
@@ -26,6 +18,7 @@ This repository is the landing page of the technical documentation of the swiss 
 
 ## Health status record
 
+- 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
 - 2021-06-20 / 09h47 to 10h18: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
 
 ## Global architecture
