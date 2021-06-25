@@ -20,6 +20,8 @@ Technical information will be exchanged in this [mailing group](https://groups.g
 
 ## Health status record
 
+[Health status dashboard](https://status.uptrends.com/b09355b3a8714d29941af4a8d7880da9)
+
 - Major incident - 2021-06-23 / 20h53 to 21h07: Covid certificate form not available.
 - Minor incident - 2021-06-23 / 14h42 to 15h11: Covid certificate system delivered a few errors. Retry was possible.
 - Minor incident - 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
