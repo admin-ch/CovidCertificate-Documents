@@ -12,6 +12,8 @@ This repository is the landing page of the technical documentation of the swiss 
 
 [Data examples](https://github.com/admin-ch/CovidCertificate-Examples)
 
+Technical information will be exchanged in this [mailing group](https://groups.google.com/g/covidcertificate). 
+
 ## Release notes
 
 [Release notes](https://github.com/admin-ch/CovidCertificate-ReleaseNotes)
