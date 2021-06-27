@@ -31,7 +31,8 @@ Technical information will be exchanged in this [mailing group](https://groups.g
 
 Here the global architecture of the COVID certificate system:
 
-![image](https://user-images.githubusercontent.com/319676/122657748-a3ce2e80-d166-11eb-8432-fe01549063db.png)
+![image](https://user-images.githubusercontent.com/319676/123532187-70ae1100-d70b-11eb-8977-c581b1c8dd5c.png)
+
 
 ## Source code of COVID certificate system
 
