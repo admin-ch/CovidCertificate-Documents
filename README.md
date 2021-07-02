@@ -22,6 +22,7 @@ Technical information will be exchanged in this [mailing group](https://groups.g
 
 [Health status dashboard](https://status.uptrends.com/b09355b3a8714d29941af4a8d7880da9)
 
+- Minor incident - 2021-07-02 / 08h07 to 09h24: 2 antigen tests have been wrongly deactivated and covid certificates with these tests couldn't be generated. 
 - Major incident - 2021-06-23 / 20h53 to 21h07: Covid certificate form not available.
 - Minor incident - 2021-06-23 / 14h42 to 15h11: Covid certificate system delivered a few errors. Retry was possible.
 - Minor incident - 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
