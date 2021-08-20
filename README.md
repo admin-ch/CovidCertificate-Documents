@@ -28,6 +28,7 @@ Technical information will be exchanged in this [mailing group](https://groups.g
 - Minor incident - 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
 - Major incident - 2021-06-20 / 09h47 to 10h18: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
 - Major incident - 2021-07-29 / 18h03 to 19h35: Covid certificate system was partially not available and just some covid certificate could be created during this time. 
+- Major incident - 2021-08-20 / 13h55 to 15h05: Covid certificate system was partially not available and just some covid certificate could be created during this time.
 
 ## Global architecture
 
