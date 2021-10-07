@@ -21,14 +21,18 @@ Technical information will be exchanged in this [mailing group](https://groups.g
 ## Health status record
 
 [Health status dashboard](https://status.uptrends.com/b09355b3a8714d29941af4a8d7880da9)
-
-- Minor incident - 2021-07-02 / 08h07 to 09h24: 2 antigen tests have been wrongly deactivated and covid certificates with these tests couldn't be generated. 
+Juni 2021
 - Major incident - 2021-06-23 / 20h53 to 21h07: Covid certificate form not available.
 - Minor incident - 2021-06-23 / 14h42 to 15h11: Covid certificate system delivered a few errors. Retry was possible.
 - Minor incident - 2021-06-23 / 10h21 to 10h56: Covid certificate system delivered a few errors. Retry was possible.
 - Major incident - 2021-06-20 / 09h47 to 10h18: Covid certificate system was partially not available and no covid certificate could have been created during this time. 
+July 2021
+- Minor incident - 2021-07-02 / 08h07 to 09h24: 2 antigen tests have been wrongly deactivated and covid certificates with these tests couldn't be generated. 
 - Major incident - 2021-07-29 / 18h03 to 19h35: Covid certificate system was partially not available and just some covid certificate could be created during this time. 
+August 2021
 - Major incident - 2021-08-20 / 13h55 to 15h05: Covid certificate system was partially not available and just some covid certificate could be created during this time.
+October 2021
+- Major incident - 2021-10-01 / 10h40 to 11h50: Covid certificate where signed with wrong keys (all certificates generated during this period are invalid), the last 10min was the service down.
 
 ## Global architecture
 
