@@ -1,0 +1,42 @@
+# Default ignored files
+/shelf/
+/.idea/
+
+### IntelliJ IDEA ###
+.idea/*
+*.iws
+*.iml
+*.ipr
+
+# ignore update_api_doc (only for local use, contains personal GitHub Tokens)
+update_api_doc.sh
+
+# confidential
+*.key
+*.cer
+*.p12
+
+# python
+__pycache__
+*.pyc
+
+# created output
+*.pdf
+*.png
+
+# macOS
+.DS_Store
+
+.vscode/
+
+# API-CLI
+*-debug.log
+*-error.log
+/.nyc_output
+/dist
+/lib
+/tmp
+/yarn.lock
+node_modules
+/out/
+.env
