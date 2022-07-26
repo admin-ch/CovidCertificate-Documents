@@ -1,10 +1,10 @@
 # Swiss Covid Certificate - Documents
 
 ### Table of contents
-* [API Doc](/api-doc/README.md)
-* [Web Management UI Doc](/ui-doc/README.md)
-* [Release notes](/release-notes/README.md)
-* [Meeting documents](/presentations/README.md)
+* [API Doc](/api-doc)
+* [Web Management UI Doc](/ui-doc)
+* [Release notes](/release-notes)
+* [Meeting documents](/presentations)
 
 
 ### Additional external documentation
