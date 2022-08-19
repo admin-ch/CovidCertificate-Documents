@@ -3,8 +3,8 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#44x)|prod|22.08.2022@07:00||
-|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|test|18.08.2022@14:10|:rocket:|
+|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|prod|22.08.2022@07:00||
+|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|test|19.08.2022@16:00|:rocket:|
 |[4.4](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#44x)|prod|25.07.2022@07:00|:rocket:|
 |[4.4](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#44x)|test|04.07.2022@14:30||
 |[4.3](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#43x)|prod|27.06.2022@07:00||
@@ -36,7 +36,7 @@
 #### Services release details
 |service|release|last modified|
 |----|----|----|
-|cc-management-service|[4.5.2](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.5.2)|17.08.2022@10:30|
+|cc-management-service|[4.5.4](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.5.4)|19.08.2022@16:00|
 |cc-management-ui|[4.5.6](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.5.6)|16.08.2022@20:45|
 |cc-report-service|4.5.7|18.08.2022@14:15|
 
