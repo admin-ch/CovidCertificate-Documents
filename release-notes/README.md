@@ -3,7 +3,7 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.6](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#46x)|prod|19.09.2022@07:00||
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:00||
 |[4.6](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#46x)|test|29.08.2022@13:30|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|prod|22.08.2022@07:00|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|test|19.08.2022@16:00||
