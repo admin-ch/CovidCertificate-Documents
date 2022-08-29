@@ -4,25 +4,25 @@
 |release|environment|date|note|
 |----|----|----|----|
 |[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:00||
-|[4.6](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#46x)|test|29.08.2022@13:30|:rocket:|
-|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|prod|22.08.2022@07:00|:rocket:|
-|[4.5](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#45x)|test|19.08.2022@16:00||
-|[4.4](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#44x)|prod|25.07.2022@07:00||
-|[4.4](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#44x)|test|04.07.2022@14:30||
-|[4.3](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#43x)|prod|27.06.2022@07:00||
-|[4.3](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#43x)|test|23.06.2022@14:00||
-|[4.2](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#42x)|prod|13.06.2022@07:00||
-|[4.2](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#42x)|test|08.06.2022@07:00||
-|[4.1](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#41x)|prod|30.05.2022@07:00||
-|[4.1](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#41x)|test|23.05.2022@09:00||
-|[4.0](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#40x)|prod|02.05.2022@07:00||
-|[4.0](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#40x)|test|11.05.2022@09:00||
-|[3.9](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#39x)|prod|31.03.2022@06:00||
-|[3.9](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#39x)|test|30.03.2022@14:00||
-|[3.7](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#37x)|prod|07.03.2022@18:00||
-|[3.7](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#37x)|test|03.03.2022@14:00||
-|[3.6](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#36x)|prod|21.02.2022@06:30||
-|[3.6](https://github.com/admin-ch/CovidCertificate-ReleaseNotes#36x)|test|18.02.2022@11:30||
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|29.08.2022@13:30|:rocket:|
+|[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00|:rocket:|
+|[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|19.08.2022@16:00||
+|[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|prod|25.07.2022@07:00||
+|[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|test|04.07.2022@14:30||
+|[4.3](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#43x)|prod|27.06.2022@07:00||
+|[4.3](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#43x)|test|23.06.2022@14:00||
+|[4.2](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#42x)|prod|13.06.2022@07:00||
+|[4.2](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#42x)|test|08.06.2022@07:00||
+|[4.1](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#41x)|prod|30.05.2022@07:00||
+|[4.1](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#41x)|test|23.05.2022@09:00||
+|[4.0](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#40x)|prod|02.05.2022@07:00||
+|[4.0](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#40x)|test|11.05.2022@09:00||
+|[3.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#39x)|prod|31.03.2022@06:00||
+|[3.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#39x)|test|30.03.2022@14:00||
+|[3.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#37x)|prod|07.03.2022@18:00||
+|[3.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#37x)|test|03.03.2022@14:00||
+|[3.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#36x)|prod|21.02.2022@06:30||
+|[3.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#36x)|test|18.02.2022@11:30||
 
 :rocket: : currently deployed
 ## Planned
