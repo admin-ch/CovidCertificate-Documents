@@ -4,7 +4,7 @@
 |release|environment|date|note|
 |----|----|----|----|
 |[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:00||
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|29.08.2022@13:30|:rocket:|
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|09.09.2022@14:15|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|19.08.2022@16:00||
 |[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|prod|25.07.2022@07:00||
@@ -28,7 +28,7 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.6|29.08.2022@13:30|
+|test|4.6|09.09.2022@14:15|
 |prod|4.6|19.09.2022@07:00|
 
 # 4.6.x
@@ -37,8 +37,9 @@
 #### Services release details
 |service|release|last modified|
 |----|----|----|
-|cc-management-ui|[4.6.3](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.6.3)|29.08.2022@13:30|
-|cc-report-service|4.6.1|29.08.2022@13:30|
+|cc-management-service|[4.6.3](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.6.3)|09.09.2022@14:15|
+|cc-management-ui|[4.6.6](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.6.6)|09.09.2022@14:15|
+|cc-report-service|4.6.5|09.09.2022@14:15|
 
 # 4.5.x
 * Reporting im Self Service
