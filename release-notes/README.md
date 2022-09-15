@@ -3,8 +3,8 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:00||
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|14.09.2022@10:00|:rocket:|
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:30||
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|15.09.2022@13:30|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00|:rocket:|
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|19.08.2022@16:00||
 |[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|prod|25.07.2022@07:00||
@@ -28,8 +28,8 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.6|14.09.2022@10:00|
-|prod|4.6|19.09.2022@07:00|
+|test|4.6|15.09.2022@13:30|
+|prod|4.6|19.09.2022@07:30|
 
 # 4.6.x
 * Reporting im Self Service
@@ -39,7 +39,7 @@
 |----|----|----|
 |cc-management-service|[4.6.4](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.6.4)|09.09.2022@15:15|
 |cc-management-ui|[4.6.6](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.6.6)|09.09.2022@14:15|
-|cc-report-service|4.6.7|14.09.2022@10:00|
+|cc-report-service|4.6.8|15.09.2022@13:30|
 
 # 4.5.x
 * Reporting im Self Service
