@@ -78,7 +78,7 @@ Consequently, the API endpoints and options in the UI will be enabled/disabled. 
 
 ### Generation, revocation and value set API doc
   - [API File](api-docs.yaml)
-  - [SwaggerUI](https://editor.swagger.io/?url=https://raw.githubusercontent.com/admin-ch/CovidCertificate-Apidoc/main/api-docs.yaml)
+  - [SwaggerUI](https://editor.swagger.io/?url=https://raw.githubusercontent.com/admin-ch/CovidCertificate-Documents/main/api-doc/api-docs.yaml)
 
 ### Verification API doc
 We do not recommend the use of the API. To save the effort of implementing the API, a Docker image of a verification service is provided. This one contains an endpoint that allows you to check, through its QR-Code, the validity of a certificate.
