@@ -3,9 +3,11 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:30||
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|15.09.2022@13:30|:rocket:|
-|[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00|:rocket:|
+|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|17.10.2022@07:00||
+|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|12.10.2022@20:00|:rocket:|
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:30|:rocket:|
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|15.09.2022@13:30||
+|[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00||
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|19.08.2022@16:00||
 |[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|prod|25.07.2022@07:00||
 |[4.4](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#44x)|test|04.07.2022@14:30||
@@ -28,8 +30,27 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.6|15.09.2022@13:30|
-|prod|4.6|19.09.2022@07:30|
+|test|4.7|30.09.2022@10:00|
+|prod|4.7|17.10.2022@07:30|
+
+# 4.7.x
+* Improvements A12 report
+* Bug birth date validation solved
+* Correction of valneva vaccine to EU standard 2.9.0
+* Third party library update and spring version 2.6.10
+* Reduction of revocation list
+
+#### Services release details
+|service|release|last modified|
+|----|----|----|
+|cc-api-gateway-service|[4.7.2](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.7.2)|03.10.2022@16:45|
+|cc-light-generation-service|[2.16.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/2.16.0)|07.10.2022@13:30|
+|cc-management-service|[4.7.8](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.7.8)|12.10.2022@18:00|
+|cc-management-ui|[4.7.1](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.7.1)|12.10.2022@20:00|
+|cc-signing-service|[4.7.3](https://github.com/admin-ch/CovidCertificate-Signing-Service/releases/tag/4.7.2)|07.10.2022@13:30|
+|cc-notification-service|[4.7.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.7.0)|07.10.2022@13:30|
+|cc-printing-service|[4.7.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.7.1)|07.10.2022@13:30|
+|cc-report-service|4.7.5|07.10.2022@13:30|
 
 # 4.6.x
 * Reporting im Self Service
