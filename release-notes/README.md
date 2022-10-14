@@ -46,7 +46,7 @@
 |cc-api-gateway-service|[4.7.2](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.7.2)|03.10.2022@16:45|
 |cc-light-generation-service|[2.16.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/2.16.0)|07.10.2022@13:30|
 |cc-management-service|[4.7.8](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.7.8)|12.10.2022@18:00|
-|cc-management-ui|[4.7.1](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.7.1)|12.10.2022@20:00|
+|cc-management-ui|[4.7.2](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.7.2)|14.10.2022@10:30|
 |cc-signing-service|[4.7.3](https://github.com/admin-ch/CovidCertificate-Signing-Service/releases/tag/4.7.2)|07.10.2022@13:30|
 |cc-notification-service|[4.7.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.7.0)|07.10.2022@13:30|
 |cc-printing-service|[4.7.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.7.1)|07.10.2022@13:30|
