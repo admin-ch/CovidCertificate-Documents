@@ -33,7 +33,7 @@
 |environment|release|date|
 |----|----|----|
 |test|4.8|09.11.2022@09:00|
-|prod|4.7|17.10.2022@07:30|
+|prod|4.8|14.11.2022@08:00|
 
 # 4.8.x
 DB migration to new instances
