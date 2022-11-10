@@ -3,9 +3,11 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|17.10.2022@07:00||
-|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|12.10.2022@20:00|:rocket:|
-|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:30|:rocket:|
+|[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|prod|14.11.2022@06:00||
+|[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|test|09.11.2022@09:00|:rocket:|
+|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#47x)|prod|17.10.2022@07:00|:rocket:|
+|[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#47x)|test|12.10.2022@20:00||
+|[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|prod|19.09.2022@07:30||
 |[4.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#46x)|test|15.09.2022@13:30||
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|prod|22.08.2022@07:00||
 |[4.5](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#45x)|test|19.08.2022@16:00||
@@ -30,8 +32,21 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.7|30.09.2022@10:00|
+|test|4.8|09.11.2022@09:00|
 |prod|4.7|17.10.2022@07:30|
+
+# 4.8.x
+DB migration to new instances
+Maintenance notifications editable in UI
+Text improvements for french
+
+
+#### Services release details
+|service|release|last modified|
+|----|----|----|
+|cc-management-service|[4.8.3](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.8.3)|09.11.2022@10:00|
+|cc-management-ui|[4.8.3](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.8.3)|10.11.2022@13:00|
+|cc-notification-service|[4.8.2](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.8.2)|10.11.2022@10:40|
 
 # 4.7.x
 * Improvements A12 report
