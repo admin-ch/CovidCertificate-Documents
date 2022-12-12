@@ -1,0 +1,1931 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Covid Certificate API Gateway Service",
+    "description": "Rest API for Covid Certificate API Gateway Service.",
+    "license": {
+      "name": "Apache 2.0"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://ws.covidcertificate.bag.admin.ch",
+      "description": "Server URL for prod environment"
+    },
+    {
+      "url": "https://ws.covidcertificate-a.bag.admin.ch",
+      "description": "Server URL for test environment"
+    }
+  ],
+  "paths": {
+    "/api/v1/covidcertificate/vaccination": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates a vaccine certificate for the given data.",
+        "description": "Creates a vaccine certificate as an QR-Code and PDF. Performs an integrity check for each request based on headers and body.",
+        "operationId": "createVaccinationCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VaccinationCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_MEDICINAL_PRODUCT": {
+                    "description": "INVALID_MEDICINAL_PRODUCT",
+                    "value": "{\"errorCode\": 454, \"errorMessage\": Invalid medicinal product}"
+                  },
+                  "INVALID_DOSES": {
+                    "description": "INVALID_DOSES",
+                    "value": "{\"errorCode\": 455, \"errorMessage\": Invalid number of doses}"
+                  },
+                  "INVALID_VACCINATION_DATE": {
+                    "description": "INVALID_VACCINATION_DATE",
+                    "value": "{\"errorCode\": 456, \"errorMessage\": Invalid vaccination date! Date cannot be in the future}"
+                  },
+                  "INVALID_COUNTRY_OF_VACCINATION": {
+                    "description": "INVALID_COUNTRY_OF_VACCINATION",
+                    "value": "{\"errorCode\": 457, \"errorMessage\": Invalid country of vaccination}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_VACCINATION_INFO": {
+                    "description": "INVALID_VACCINATION_INFO",
+                    "value": "{\"errorCode\": 451, \"errorMessage\": Invalid vaccination info! Exactly one element is expected in the array.}"
+                  },
+                  "INVALID_ADDRESS": {
+                    "description": "INVALID_ADDRESS",
+                    "value": "{\"errorCode\": 474, \"errorMessage\": Paper-based delivery requires a valid address.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/vaccination-tourist": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates a WHO vaccination-tourist certificate for the given data.",
+        "description": "Creates a WHO vaccination-tourist certificate as an QR-Code and PDF. Performs an integrity check for each request based on headers and body.",
+        "operationId": "createVaccinationTouristCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VaccinationTouristCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_MEDICINAL_PRODUCT": {
+                    "description": "INVALID_MEDICINAL_PRODUCT",
+                    "value": "{\"errorCode\": 454, \"errorMessage\": Invalid medicinal product}"
+                  },
+                  "INVALID_DOSES": {
+                    "description": "INVALID_DOSES",
+                    "value": "{\"errorCode\": 455, \"errorMessage\": Invalid number of doses}"
+                  },
+                  "INVALID_VACCINATION_DATE": {
+                    "description": "INVALID_VACCINATION_DATE",
+                    "value": "{\"errorCode\": 456, \"errorMessage\": Invalid vaccination date! Date cannot be in the future}"
+                  },
+                  "INVALID_COUNTRY_OF_VACCINATION": {
+                    "description": "INVALID_COUNTRY_OF_VACCINATION",
+                    "value": "{\"errorCode\": 457, \"errorMessage\": Invalid country of vaccination}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_VACCINATION_INFO": {
+                    "description": "INVALID_VACCINATION_INFO",
+                    "value": "{\"errorCode\": 451, \"errorMessage\": Invalid vaccination info! Exactly one element is expected in the array.}"
+                  },
+                  "INVALID_ADDRESS": {
+                    "description": "INVALID_ADDRESS",
+                    "value": "{\"errorCode\": 474, \"errorMessage\": Paper-based delivery requires a valid address.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/test": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates a test certificate for the given data.",
+        "description": "Creates a test certificate as an QR-Code and PDF. Performs an integrity check for each request based on headers and body.",
+        "operationId": "createTestCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_MEMBER_STATE_OF_TEST": {
+                    "description": "INVALID_MEMBER_STATE_OF_TEST",
+                    "value": "{\"errorCode\": 461, \"errorMessage\": Invalid member state of test}"
+                  },
+                  "INVALID_TYP_OF_TEST": {
+                    "description": "INVALID_TYP_OF_TEST",
+                    "value": "{\"errorCode\": 462, \"errorMessage\": Invalid type of test and manufacturer code combination! Must either be a PCR Test type and no manufacturer code or give a manufacturer code and the antigen test type code.}"
+                  },
+                  "INVALID_TEST_CENTER": {
+                    "description": "INVALID_TEST_CENTER",
+                    "value": "{\"errorCode\": 463, \"errorMessage\": Invalid testing center or facility}"
+                  },
+                  "INVALID_SAMPLE_OR_RESULT_DATE_TIME": {
+                    "description": "INVALID_SAMPLE_OR_RESULT_DATE_TIME",
+                    "value": "{\"errorCode\": 464, \"errorMessage\": Invalid sample or result date time! Sample date must be before current date and before result date}"
+                  },
+                  "INVALID_LANGUAGE": {
+                    "description": "INVALID_LANGUAGE",
+                    "value": "{\"errorCode\": 469, \"errorMessage\": The given language does not match any of the supported languages: de, it, fr!}"
+                  },
+                  "INVALID_TEST_INFO": {
+                    "description": "INVALID_TEST_INFO",
+                    "value": "{\"errorCode\": 460, \"errorMessage\": Invalid test info! Exactly one element is expected in the array.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  },
+                  "INVALID_PRINT_FOR_TEST": {
+                    "description": "INVALID_PRINT_FOR_TEST",
+                    "value": "{\"errorCode\": 488, \"errorMessage\": Print is not available for test certificates}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/revoke": {
+      "post": {
+        "tags": [
+          "covid-certificate-revocation-controller"
+        ],
+        "summary": "Revokes the certificate for the given UVCI.",
+        "description": "Revokes a Covid certificate with a given UVCI. Performs an integrity check for each request based on headers and body.",
+        "operationId": "revokeCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevocationDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "CREATED"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_UVCI": {
+                    "description": "INVALID_UVCI",
+                    "value": "{\"errorCode\": 470, \"errorMessage\": Invalid UVCI format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "DUPLICATE_UVCI": {
+                    "description": "DUPLICATE_UVCI",
+                    "value": "{\"errorCode\": 480, \"errorMessage\": Duplicate UVCI.}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/recovery": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates a recovery certificate for the given data.",
+        "description": "Creates a recovery certificate as an QR-Code and PDF. Performs an integrity check for each request based on headers and body.",
+        "operationId": "createRecoveryCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecoveryCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_DATE_OF_FIRST_POSITIVE_TEST_RESULT": {
+                    "description": "INVALID_DATE_OF_FIRST_POSITIVE_TEST_RESULT",
+                    "value": "{\"errorCode\": 466, \"errorMessage\": Invalid date of first positive test result}"
+                  },
+                  "INVALID_COUNTRY_OF_TEST": {
+                    "description": "INVALID_COUNTRY_OF_TEST",
+                    "value": "{\"errorCode\": 467, \"errorMessage\": Invalid country of test}"
+                  },
+                  "INVALID_LANGUAGE": {
+                    "description": "INVALID_LANGUAGE",
+                    "value": "{\"errorCode\": 469, \"errorMessage\": The given language does not match any of the supported languages: de, it, fr!}"
+                  },
+                  "INVALID_RECOVERY_INFO": {
+                    "description": "INVALID_RECOVERY_INFO",
+                    "value": "{\"errorCode\": 465, \"errorMessage\": Invalid recovery info! Exactly one element is expected in the array.}"
+                  },
+                  "INVALID_ADDRESS": {
+                    "description": "INVALID_ADDRESS",
+                    "value": "{\"errorCode\": 474, \"errorMessage\": Paper-based delivery requires a valid address.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/recovery-rat": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates a Rapid-Antigen-Test (RAT) based recovery certificate for the given data.",
+        "description": "Creates a Rapid-Antigen-Test (RAT) based recovery certificate for the given data in form of a Pdf document and a QR-Code image.",
+        "operationId": "createRecoveryRatCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecoveryRatCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_DATE_OF_FIRST_POSITIVE_TEST_RESULT": {
+                    "description": "INVALID_DATE_OF_FIRST_POSITIVE_TEST_RESULT",
+                    "value": "{\"errorCode\": 466, \"errorMessage\": Invalid date of first positive test result}"
+                  },
+                  "INVALID_LANGUAGE": {
+                    "description": "INVALID_LANGUAGE",
+                    "value": "{\"errorCode\": 469, \"errorMessage\": The given language does not match any of the supported languages: de, it, fr!}"
+                  },
+                  "MISSING_RECOVERY_RAT_INFO": {
+                    "description": "MISSING_RECOVERY_RAT_INFO",
+                    "value": "{\"errorCode\": 432, \"errorMessage\": Property recoveryRatInfo is missing!}"
+                  },
+                  "INVALID_ADDRESS": {
+                    "description": "INVALID_ADDRESS",
+                    "value": "{\"errorCode\": 474, \"errorMessage\": Paper-based delivery requires a valid address.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/covidcertificate/antibody": {
+      "post": {
+        "tags": [
+          "covid-certificate-generation-controller"
+        ],
+        "summary": "Creates an antibody certificate for the given data.",
+        "description": "Creates an antibody certificate as a QR-Code and PDF. Performs an integrity check for each request based on headers and body.",
+        "operationId": "createAntibodyCertificate",
+        "parameters": [
+          {
+            "name": "X-Signature",
+            "in": "header",
+            "description": "Base64 encoded hash of the canonicalized body, generated with the `SHA256withRSA` algorithm signed with the private key of the certificate issued by \"SwissGov Regular CA 01\". See [documentation](https://github.com/admin-ch/CovidCertificate-Apidoc#content-signature) on Github.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "Base64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AntibodyCertificateCreateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CovidCertificateCreateResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "NO_PERSON_DATA": {
+                    "description": "NO_PERSON_DATA",
+                    "value": "{\"errorCode\": 452, \"errorMessage\": No person data was specified}"
+                  },
+                  "INVALID_DATE_OF_BIRTH": {
+                    "description": "INVALID_DATE_OF_BIRTH",
+                    "value": "{\"errorCode\": 453, \"errorMessage\": Invalid dateOfBirth! Must be younger than 1900-01-01}"
+                  },
+                  "INVALID_DATE_OF_BIRTH_IN_FUTURE": {
+                    "description": "INVALID_DATE_OF_BIRTH_IN_FUTURE",
+                    "value": "{\"errorCode\": 489, \"errorMessage\": Invalid dateOfBirth! Date cannot be in the future}"
+                  },
+                  "INVALID_GIVEN_NAME": {
+                    "description": "INVALID_GIVEN_NAME",
+                    "value": "{\"errorCode\": 458, \"errorMessage\": Invalid given name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_GIVEN_NAME": {
+                    "description": "INVALID_STANDARDISED_GIVEN_NAME",
+                    "value": "{\"errorCode\": 477, \"errorMessage\": Invalid given name! The standardised given name exceeds 80 chars}"
+                  },
+                  "INVALID_FAMILY_NAME": {
+                    "description": "INVALID_FAMILY_NAME",
+                    "value": "{\"errorCode\": 459, \"errorMessage\": Invalid family name! Must not exceed 80 chars}"
+                  },
+                  "INVALID_STANDARDISED_FAMILY_NAME": {
+                    "description": "INVALID_STANDARDISED_FAMILY_NAME",
+                    "value": "{\"errorCode\": 478, \"errorMessage\": Invalid family name! The standardised family name exceeds 80 chars}"
+                  },
+                  "INVALID_SAMPLE_OR_RESULT_DATE_TIME": {
+                    "description": "INVALID_SAMPLE_OR_RESULT_DATE_TIME",
+                    "value": "{\"errorCode\": 464, \"errorMessage\": Invalid sample or result date time! Sample date must be before current date and before result date}"
+                  },
+                  "INVALID_LANGUAGE": {
+                    "description": "INVALID_LANGUAGE",
+                    "value": "{\"errorCode\": 469, \"errorMessage\": The given language does not match any of the supported languages: de, it, fr!}"
+                  },
+                  "INVALID_ANTIBODY_INFO": {
+                    "description": "INVALID_ANTIBODY_INFO",
+                    "value": "{\"errorCode\": 497, \"errorMessage\": Invalid antibody info! Exactly one element is expected in the array.}"
+                  },
+                  "INVALID_ADDRESS": {
+                    "description": "INVALID_ADDRESS",
+                    "value": "{\"errorCode\": 474, \"errorMessage\": Paper-based delivery requires a valid address.}"
+                  },
+                  "DUPLICATE_DELIVERY_METHOD": {
+                    "description": "DUPLICATE_DELIVERY_METHOD",
+                    "value": "{\"errorCode\": 475, \"errorMessage\": Delivery method can either be InApp or Mail, but not both.}"
+                  },
+                  "INVALID_APP_CODE": {
+                    "description": "INVALID_APP_CODE",
+                    "value": "{\"errorCode\": 479, \"errorMessage\": App code is in an invalid format.}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "All certificate creation endpoints can be toggled, when an endpoint is disabled, the backend respond with a HTTP 403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestError"
+                },
+                "examples": {
+                  "INVALID_BEARER": {
+                    "description": "INVALID_BEARER",
+                    "value": "{\"errorCode\": 492, \"errorMessage\": Invalid OTP}"
+                  },
+                  "MISSING_BEARER_JSON": {
+                    "description": "MISSING_BEARER_JSON",
+                    "value": "{\"errorCode\": 493, \"errorMessage\": Missing OTP}"
+                  },
+                  "INVALID_SIGNATURE": {
+                    "description": "INVALID_SIGNATURE",
+                    "value": "{\"errorCode\": 490, \"errorMessage\": Integrity check failed, the body hash does not match the hash in the header}"
+                  },
+                  "SIGNATURE_PARSE_ERROR": {
+                    "description": "SIGNATURE_PARSE_ERROR",
+                    "value": "{\"errorCode\": 491, \"errorMessage\": Signature could not be parsed}"
+                  },
+                  "INVALID_IDENTITY_USER": {
+                    "description": "INVALID_IDENTITY_USER",
+                    "value": "{\"errorCode\": 494, \"errorMessage\": Invalid identity user}"
+                  },
+                  "INVALID_IDENTITY_USER_ROLE": {
+                    "description": "INVALID_IDENTITY_USER_ROLE",
+                    "value": "{\"errorCode\": 495, \"errorMessage\": Invalid identity user role}"
+                  },
+                  "INVALID_OTP_LENGTH": {
+                    "description": "INVALID_OTP_LENGTH",
+                    "value": "{\"errorCode\": 496, \"errorMessage\": Invalid OTP length}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/vaccines": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all vaccines.",
+        "description": "Gets a list of all vaccines based on the official list of the EU. Performs an integrity check for each request based on headers and body.",
+        "operationId": "vaccines",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VaccineDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/rapid-tests": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all rapid tests.",
+        "description": "Gets a list of all rapid tests based on the official list of the EU. Performs an integrity check for each request based on headers and body.",
+        "operationId": "rapidTests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RapidTestDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/issuable-vaccines": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all issuable vaccines.",
+        "description": "Gets a list of all issuable vaccines accepted by the BAG based on the official list of the EU. Performs an integrity check for each request based on headers and body.",
+        "operationId": "issuableVaccines",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IssuableVaccineDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/issuable-vaccines/{systemSource}": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all issuable vaccines.",
+        "description": "Gets a list of all issuable vaccines accepted by the BAG based on the official list of the EU. Performs an integrity check for each request based on headers and body.",
+        "operationId": "issuableVaccines_1",
+        "parameters": [
+          {
+            "name": "systemSource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IssuableVaccineDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/issuable-rapid-tests": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all issuable rapid tests.",
+        "description": "Gets a list of all issuable rapid tests accepted by the BAG based on the official list of the EU. Performs an integrity check for each request based on headers and body.",
+        "operationId": "issuableRapidTests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IssuableRapidTestDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/countries": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all countryCodes for every language.",
+        "description": "Gets a list of all countryCodes for every supported language. Performs an integrity check for each request based on headers and body.",
+        "operationId": "countryCodes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryCodesDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/valuesets/countries/{language}": {
+      "get": {
+        "tags": [
+          "value-sets-controller"
+        ],
+        "summary": "Gets a list of all countryCodes for a specific language.",
+        "description": "Gets a list of all countryCodes for a specific supported language. Performs an integrity check for each request based on headers and body.",
+        "operationId": "countryCodesByLanguage",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryCodeDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ping": {
+      "get": {
+        "tags": [
+          "app-controller"
+        ],
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CovidCertificateAddressDto": {
+        "required": [
+          "cantonCodeSender",
+          "city",
+          "streetAndNr",
+          "zipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "streetAndNr": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string",
+            "description": "Street and number of the certificate holder.",
+            "example": "Musterweg 4b"
+          },
+          "zipCode": {
+            "maxLength": 4,
+            "minLength": 4,
+            "type": "integer",
+            "format": "int32",
+            "example": 3000
+          },
+          "city": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string",
+            "example": "Bern"
+          },
+          "cantonCodeSender": {
+            "type": "string",
+            "description": "Abbreviation of the canton issuing the certificate. This will be used as the sender of the paper based delivery.",
+            "example": "BE"
+          }
+        },
+        "description": "Address of the recipient. A printout of the certificate will be sent to the certificate holder if this parameter is passed. The first line of the address is automatically filled with the givenName and familyName from the name attribute. Can not be combined with inAppDeliveryCode."
+      },
+      "CovidCertificatePersonNameDto": {
+        "type": "object",
+        "properties": {
+          "familyName": {
+            "type": "string",
+            "description": "family name of the covid certificate owner. Format: maxLength: 80 CHAR",
+            "example": "Rochat"
+          },
+          "givenName": {
+            "type": "string",
+            "description": "first name of the covid certificate owner. Format: maxLength: 80 CHAR",
+            "example": "Céline"
+          }
+        }
+      },
+      "VaccinationCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/CovidCertificateAddressDto"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "vaccinationInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaccinationCertificateDataDto"
+            }
+          }
+        }
+      },
+      "VaccinationCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "medicinalProductCode": {
+            "type": "string",
+            "description": "name of the medicinal product as registered in the country.",
+            "example": "EU/1/20/1507"
+          },
+          "numberOfDoses": {
+            "type": "integer",
+            "description": "number in a series of doses.",
+            "format": "int32",
+            "example": 2
+          },
+          "totalNumberOfDoses": {
+            "type": "integer",
+            "description": "total series of doses.",
+            "format": "int32",
+            "example": 2
+          },
+          "vaccinationDate": {
+            "type": "string",
+            "description": "date of vaccination. Format: ISO 8601 date without time.",
+            "format": "date",
+            "example": "2021-05-14T00:00:00.000Z"
+          },
+          "countryOfVaccination": {
+            "type": "string",
+            "description": "the country in which the covid certificate owner has been vaccinated. Format: string (2 chars according to ISO 3166 Country Codes).",
+            "example": "CH"
+          }
+        }
+      },
+      "RestError": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "CovidCertificateCreateResponseDto": {
+        "type": "object",
+        "properties": {
+          "pdf": {
+            "type": "string",
+            "format": "byte"
+          },
+          "qrCode": {
+            "type": "string",
+            "format": "byte"
+          },
+          "uvci": {
+            "type": "string"
+          },
+          "appDeliveryError": {
+            "$ref": "#/components/schemas/RestError"
+          }
+        }
+      },
+      "VaccinationTouristCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/CovidCertificateAddressDto"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "vaccinationTouristInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VaccinationTouristCertificateDataDto"
+            }
+          }
+        }
+      },
+      "VaccinationTouristCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "medicinalProductCode": {
+            "type": "string",
+            "description": "name of the medicinal product as registered in the country.",
+            "example": "EU/1/20/1507"
+          },
+          "numberOfDoses": {
+            "type": "integer",
+            "description": "number in a series of doses.",
+            "format": "int32",
+            "example": 2
+          },
+          "totalNumberOfDoses": {
+            "type": "integer",
+            "description": "total series of doses.",
+            "format": "int32",
+            "example": 2
+          },
+          "vaccinationDate": {
+            "type": "string",
+            "description": "date of vaccination. Format: ISO 8601 date without time.",
+            "format": "date",
+            "example": "2021-05-14T00:00:00.000Z"
+          },
+          "countryOfVaccination": {
+            "type": "string",
+            "description": "the country in which the covid certificate owner has been vaccinated. Format: string (2 chars according to ISO 3166 Country Codes).",
+            "example": "CH"
+          }
+        }
+      },
+      "TestCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "testInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TestCertificateDataDto"
+            }
+          }
+        }
+      },
+      "TestCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "typeCode": {
+            "type": "string",
+            "description": "type of test. This field is only mandatory when it is a PCR test. If given with manufacturerCode as well, they must match otherwise there will be a 400 BAD REQUEST.",
+            "example": "LP217198-3"
+          },
+          "manufacturerCode": {
+            "type": "string",
+            "description": "test manufacturer code. This should only be sent when it is not a PCR test, otherwise there will be a 400 BAD REQUEST.",
+            "example": "1232"
+          },
+          "sampleDateTime": {
+            "type": "string",
+            "description": "date and time of the test sample collection. Format: ISO 8601 date incl. time.",
+            "format": "date-time",
+            "example": "2020-09-24T17:29:41.000Z"
+          },
+          "testingCentreOrFacility": {
+            "type": "string",
+            "description": "name of centre or facility. Format: string, maxLength: 80 CHAR.",
+            "example": "Walk-in-Lyss AG"
+          },
+          "memberStateOfTest": {
+            "type": "string",
+            "description": "the country in which the covid certificate owner has been tested. Format: string (2 chars according to ISO 3166 Country Codes).",
+            "example": "CH"
+          }
+        }
+      },
+      "RevocationDto": {
+        "type": "object",
+        "properties": {
+          "uvci": {
+            "type": "string",
+            "description": "UVCI of certificate to be revoked.",
+            "example": "urn:uvci:01:CH:97DAB5E31B589AF3CAE2F53F"
+          },
+          "fraud": {
+            "type": "boolean"
+          },
+          "otp": {
+            "type": "string"
+          }
+        }
+      },
+      "RecoveryCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/CovidCertificateAddressDto"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "recoveryInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecoveryCertificateDataDto"
+            }
+          }
+        }
+      },
+      "RecoveryCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "dateOfFirstPositiveTestResult": {
+            "type": "string",
+            "description": "date when the sample for the test was collected that led to positive test obtained through a procedure established by a public health authority. Format: ISO 8601 date without time.",
+            "format": "date",
+            "example": "2021-10-03T00:00:00.000Z"
+          },
+          "countryOfTest": {
+            "type": "string",
+            "description": "the country in which the covid certificate owner has been tested. Format: string (2 chars according to ISO 3166 Country Codes).",
+            "example": "CH"
+          }
+        }
+      },
+      "RecoveryRatCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "testInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecoveryRatCertificateDataDto"
+            }
+          }
+        }
+      },
+      "RecoveryRatCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "typeCode": {
+            "type": "string",
+            "description": "type of test. This field is optional if manufacturer code is present otherwise it must be LP217198-3 (RAPID-ANTIGEN-TEST).",
+            "example": "LP217198-3"
+          },
+          "manufacturerCode": {
+            "type": "string",
+            "description": "test manufacturer code. This should only be sent when it is not a PCR test, otherwise there will be a 400 BAD REQUEST.",
+            "example": "1232"
+          },
+          "sampleDateTime": {
+            "type": "string",
+            "description": "date and time of the test sample collection, can't be before 2022-01-24. Format: ISO 8601 date incl. time.",
+            "format": "date-time",
+            "example": "2022-01-24T17:29:41.000Z"
+          },
+          "testingCentreOrFacility": {
+            "type": "string",
+            "description": "name of centre or facility. Format: string, maxLength: 80 CHAR.",
+            "example": "Walk-in-Lyss AG"
+          },
+          "memberStateOfTest": {
+            "type": "string",
+            "description": "the country in which the covid certificate owner has been tested. Format: string (2 chars according to ISO 3166 Country Codes).",
+            "example": "CH"
+          }
+        }
+      },
+      "AntibodyCertificateCreateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/CovidCertificatePersonNameDto"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "birthdate of the covid certificate owner. Format: ISO 8601 date without time (e.g. 1985-09-20) OR YYYY-MM (e.g. 1985-09) OR YYYY (e.g. 1985).",
+            "example": "1985-09-20T00:00:00.000Z"
+          },
+          "language": {
+            "type": "string",
+            "description": "language for the PDF (together with english). Accepted languages are: de, it, fr, rm",
+            "example": "de"
+          },
+          "otp": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/CovidCertificateAddressDto"
+          },
+          "appCode": {
+            "maxLength": 9,
+            "minLength": 9,
+            "type": "string",
+            "description": "Code to deliver the certificate directly to the app. Can not be combined with address."
+          },
+          "antibodyInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AntibodyCertificateDataDto"
+            }
+          }
+        }
+      },
+      "AntibodyCertificateDataDto": {
+        "type": "object",
+        "properties": {
+          "sampleDate": {
+            "type": "string",
+            "description": "date when the sample for the test was collected that led to serology positive test obtained through a procedure established by a public health authority. Format: ISO 8601 date without time.",
+            "format": "date",
+            "example": "2021-10-03T00:00:00.000Z"
+          },
+          "testingCenterOrFacility": {
+            "maxLength": 80,
+            "type": "string",
+            "description": " the Swissmedic authorization number (mandatory) of the laboratory + name of the laboratory (optional).",
+            "example": "512345-123456789, SwissLabTest Center Zürich"
+          }
+        }
+      },
+      "VaccineDto": {
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "description": "Code of vaccination as string.",
+            "example": "EU/1/20/1507"
+          },
+          "productDisplay": {
+            "type": "string",
+            "description": "Display name of vaccination as string.",
+            "example": "Spikevax (previously COVID-19 Vaccine Moderna)"
+          },
+          "prophylaxisCode": {
+            "type": "string",
+            "description": "Code of prophylaxis type as string.",
+            "example": "1119349007"
+          },
+          "prophylaxisDisplay": {
+            "type": "string",
+            "description": "Display name of prophylaxis type as string.",
+            "example": "SARS-CoV-2 mRNA vaccine"
+          },
+          "authHolderCode": {
+            "type": "string",
+            "description": "Code of authorization holder as string.",
+            "example": "ORG-100031184"
+          },
+          "authHolderDisplay": {
+            "type": "string",
+            "description": "Display name of authorization holder as string.",
+            "example": "Moderna Biotech Spain S.L."
+          },
+          "issuable": {
+            "type": "string",
+            "description": "This attribute tells us if a vaccine is issuable in CH_ONLY, CH_AND_ABROAD or ABROAD_ONLY.",
+            "example": "CH_AND_ABROAD"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "If vaccination is accepted by the BAG and the EU.",
+            "example": true
+          }
+        }
+      },
+      "RapidTestDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code of rapid test as string.",
+            "example": "1232"
+          },
+          "display": {
+            "type": "string",
+            "description": "Manufacturer and display name of rapid test as string.",
+            "example": "Abbott Rapid Diagnostics, Panbio Covid-19 Ag Rapid Test"
+          },
+          "validUntil": {
+            "type": "string",
+            "description": "Deadline after which the rapid-test can no longer be used to establish a certificate.",
+            "format": "date-time",
+            "example": "2022-01-05T23:00:00.000Z"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "If rapid test is accepted by the BAG and the EU.",
+            "example": true
+          }
+        }
+      },
+      "IssuableVaccineDto": {
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "description": "Code of vaccination as string.",
+            "example": "EU/1/20/1507"
+          },
+          "productDisplay": {
+            "type": "string",
+            "description": "Display name of vaccination as string.",
+            "example": "Spikevax (previously COVID-19 Vaccine Moderna)"
+          },
+          "prophylaxisCode": {
+            "type": "string",
+            "description": "Code of prophylaxis type as string.",
+            "example": "1119349007"
+          },
+          "prophylaxisDisplay": {
+            "type": "string",
+            "description": "Display name of prophylaxis type as string.",
+            "example": "SARS-CoV-2 mRNA vaccine"
+          },
+          "authHolderCode": {
+            "type": "string",
+            "description": "Code of authorization holder as string.",
+            "example": "ORG-100031184"
+          },
+          "authHolderDisplay": {
+            "type": "string",
+            "description": "Display name of authorization holder as string.",
+            "example": "Moderna Biotech Spain S.L."
+          },
+          "issuable": {
+            "type": "string",
+            "description": "This attribute tells us if a vaccine is issuable in CH_ONLY, CH_AND_ABROAD or ABROAD_ONLY.",
+            "example": "CH_AND_ABROAD"
+          }
+        }
+      },
+      "IssuableRapidTestDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code of rapid test as string.",
+            "example": "1232"
+          },
+          "display": {
+            "type": "string",
+            "description": "Manufacturer and display name of rapid test as string.",
+            "example": "Abbott Rapid Diagnostics, Panbio Covid-19 Ag Rapid Test"
+          },
+          "validUntil": {
+            "type": "string",
+            "description": "Deadline after which the rapid-test can no longer be used to establish a certificate.",
+            "format": "date-time",
+            "example": "2022-01-05T23:00:00.000Z"
+          }
+        }
+      },
+      "CountryCodeDto": {
+        "type": "object",
+        "properties": {
+          "display": {
+            "type": "string"
+          },
+          "lang": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "string"
+          },
+          "system": {
+            "type": "string"
+          },
+          "short": {
+            "type": "string"
+          }
+        }
+      },
+      "CountryCodesDto": {
+        "type": "object",
+        "properties": {
+          "de": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCodeDto"
+            }
+          },
+          "en": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCodeDto"
+            }
+          },
+          "fr": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCodeDto"
+            }
+          },
+          "it": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCodeDto"
+            }
+          },
+          "rm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryCodeDto"
+            }
+          }
+        }
+      }
+    }
+  }
+}
