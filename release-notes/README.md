@@ -49,14 +49,14 @@
 #### Services release details
 |service|release|last modified|
 |----|----|----|
-|cc-api-gateway-service|[4.9.1](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.9.1)|05.12.2022@16:00|
-|cc-light-generation-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.9.2)|05.12.2022@16:00|
-|cc-management-service|[4.9.3](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.9.2)|09.12.2022@14:30|
+|cc-api-gateway-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.9.2)|15.12.2022@16:30|
+|cc-light-generation-service|[4.9.3](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.9.3)|15.12.2022@16:30|
+|cc-management-service|[4.9.4](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.9.4)|15.12.2022@16:30|
 |cc-management-ui|[4.9.1](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.9.1)|08.12.2022@14:30|
-|cc-signing-service|[4.9.0](https://github.com/admin-ch/CovidCertificate-Signing-Service/releases/tag/4.9.0)|30.11.2022@10:15|
-|cc-notification-service|[4.9.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.9.1)|05.12.2022@16:00|
-|cc-printing-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.9.2)|05.12.2022@16:00|
-|cc-report-service|4.9.10|14.12.2022@14:00|
+|cc-signing-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Signing-Service/releases/tag/4.9.1)|15.12.2022@16:30|
+|cc-notification-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.9.2)|15.12.2022@16:30|
+|cc-printing-service|[4.9.3](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.9.3)|15.12.2022@16:30|
+|cc-report-service|4.9.11|15.12.2022@16:30|
 
 # 4.8.x
 * DB migration to new instances
