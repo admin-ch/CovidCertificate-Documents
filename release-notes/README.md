@@ -56,7 +56,7 @@
 |cc-signing-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Signing-Service/releases/tag/4.9.1)|15.12.2022@16:30|
 |cc-notification-service|[4.9.2](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.9.2)|15.12.2022@16:30|
 |cc-printing-service|[4.9.3](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.9.3)|15.12.2022@16:30|
-|cc-report-service|4.9.11|15.12.2022@16:30|
+|cc-report-service|4.9.12|16.12.2022@12:00|
 
 # 4.8.x
 * DB migration to new instances
