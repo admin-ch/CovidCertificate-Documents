@@ -3,8 +3,10 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
+|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00||
+|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|test|09.01.2023@14:00|:rocket:|
 |[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|prod|19.12.2022@08:00|:rocket:|
-|[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|test|30.11.2022@12:00|:rocket:|
+|[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|test|30.11.2022@12:00||
 |[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|prod|14.11.2022@06:00||
 |[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|test|09.11.2022@09:00||
 |[4.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#47x)|prod|17.10.2022@07:00||
@@ -23,19 +25,29 @@
 |[4.1](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#41x)|test|23.05.2022@09:00||
 |[4.0](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#40x)|prod|02.05.2022@07:00||
 |[4.0](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#40x)|test|11.05.2022@09:00||
-|[3.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#39x)|prod|31.03.2022@06:00||
-|[3.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#39x)|test|30.03.2022@14:00||
-|[3.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#37x)|prod|07.03.2022@18:00||
-|[3.7](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#37x)|test|03.03.2022@14:00||
-|[3.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#36x)|prod|21.02.2022@06:30||
-|[3.6](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#36x)|test|18.02.2022@11:30||
 
 :rocket: : currently deployed
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.9|30.11.2022@12:00|
-|prod|4.9|19.12.2022@08:00|
+|test|4.10|09.01.2023@14:00|
+|prod|4.10|30.01.2023@08:00|
+
+# 4.10.x
+* New Vaccine VidPrevtyn Beta
+* Refactoring DTO Validation
+* Code quality according sonar
+
+
+#### Services release details
+|service|release|last modified|
+|----|----|----|
+|cc-api-gateway-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.10.0)|04.01.2023@12:00|
+|cc-light-generation-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.10.0)|04.01.2023@14:00|
+|cc-management-service|[4.10.3](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.10.3)|09.01.2023@10:00|
+|cc-notification-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.10.0)|04.01.2023@16:30|
+|cc-printing-service|[4.10.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.10.1)|06.01.2023@13:30|
+|cc-report-service|4.10.2|09.01.2023@10:00|
 
 # 4.9.x
 * Java 17 und Spring Update 2.7.5
