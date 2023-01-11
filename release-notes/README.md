@@ -45,9 +45,9 @@
 |cc-api-gateway-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.10.0)|04.01.2023@12:00|
 |cc-light-generation-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.10.0)|04.01.2023@14:00|
 |cc-management-service|[4.10.3](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.10.3)|09.01.2023@10:00|
-|cc-notification-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.10.0)|04.01.2023@16:30|
+|cc-notification-service|[4.10.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.10.1)|11.01.2023@11:00|
 |cc-printing-service|[4.10.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.10.1)|06.01.2023@13:30|
-|cc-report-service|4.10.2|09.01.2023@10:00|
+|cc-report-service|4.10.3|11.01.2023@11:00|
 
 # 4.9.x
 * Java 17 und Spring Update 2.7.5
