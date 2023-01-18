@@ -35,7 +35,7 @@
 
 # 4.10.x
 * New Vaccine VidPrevtyn Beta
-* Refactoring DTO Validation
+* Administrative functionality
 * Code quality according sonar
 
 
