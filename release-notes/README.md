@@ -42,9 +42,10 @@
 #### Services release details
 |service|release|last modified|
 |----|----|----|
-|cc-api-gateway-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.10.0)|04.01.2023@12:00|
+|cc-api-gateway-service|[4.10.2](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.10.2)|23.01.2023@09:45|
 |cc-light-generation-service|[4.10.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.10.0)|04.01.2023@14:00|
 |cc-management-service|[4.10.4](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.10.4)|20.01.2023@10:00|
+|cc-management-ui|[4.10.2](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.10.2)|26.01.2023@12:00|
 |cc-notification-service|[4.10.2](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.10.2)|17.01.2023@09:00|
 |cc-printing-service|[4.10.2](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.10.1)|20.01.2023@10:00|
 |cc-report-service|4.10.4|20.01.2023@10:00|
