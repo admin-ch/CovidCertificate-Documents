@@ -48,7 +48,7 @@
 |cc-management-ui|[4.10.2](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.10.2)|26.01.2023@12:00|
 |cc-notification-service|[4.10.2](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.10.2)|17.01.2023@09:00|
 |cc-printing-service|[4.10.2](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.10.1)|20.01.2023@10:00|
-|cc-report-service|4.10.4|20.01.2023@10:00|
+|cc-report-service|4.10.6|27.01.2023@12:00|
 
 # 4.9.x
 * Java 17 und Spring Update 2.7.5
