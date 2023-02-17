@@ -178,7 +178,7 @@ If the imported CSV file can't be processed because of an error, then an error f
 In this case, fix the errors in the CSV file according to the error description in the returned file.
 
 # How to revoke multiple COVID certificates ?
-The **Revoke multiple certificates** function allows you to revoke several certificates by importing a CSV file. The import file can be produced using the <a href="https://github.com/admin-ch/CovidCertificate-UIdoc/blob/main/template-bulk_revocation.xlsx">template-bulk_revocation.xlsx</a> template.
+The **Revoke multiple certificates** function allows you to revoke several certificates by importing a CSV file. The import file can be produced using the <a href="https://github.com/admin-ch/CovidCertificate-Documents/blob/main/ui-doc/template-bulk_revocation.xlsx">template-bulk_revocation.xlsx</a> template.
 
 ### Supported format for uvci
 Description: UVCI is the certificate unique identifier.  
