@@ -3,9 +3,11 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00||
-|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|test|09.01.2023@14:00|:rocket:|
-|[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|prod|19.12.2022@08:00|:rocket:|
+|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|30.01.2023@08:00||
+|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|test|09.01.2023@14:00|:rocket:|
+|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00|:rocket:|
+|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|test|09.01.2023@14:00||
+|[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|prod|19.12.2022@08:00||
 |[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|test|30.11.2022@12:00||
 |[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|prod|14.11.2022@06:00||
 |[4.8](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#48x)|test|09.11.2022@09:00||
@@ -30,8 +32,25 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.10|09.01.2023@14:00|
-|prod|4.10|30.01.2023@08:00|
+|test|4.11|08.02.2023@16:00|
+|prod|4.11|27.02.2023@08:15|
+
+# 4.11.x
+* New Report A13 to check printing KPI
+* Administrative functionality
+* Code quality according sonar
+
+
+#### Services release details
+|service|release|last modified|
+|----|----|----|
+|cc-api-gateway-service|[4.11.2](https://github.com/admin-ch/CovidCertificate-Api-Gateway-Service/releases/tag/4.11.2)|16.02.2023@09:00|
+|cc-light-generation-service|[4.11.0](https://github.com/admin-ch/CovidCertificate-Light-Certificate-Generation-Service/releases/tag/4.11.0)|10.02.2023@10:30|
+|cc-management-service|[4.11.2](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.11.2)|16.02.2023@09:00|
+|cc-management-ui|[4.11.0](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.11.0)|17.02.2023@14:00|
+|cc-notification-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.11.1)|16.02.2023@09:00|
+|cc-printing-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.11.1)|08.02.2023@16:00|
+|cc-report-service|4.11.2|17.02.2023@08:00|
 
 # 4.10.x
 * New Vaccine VidPrevtyn Beta
