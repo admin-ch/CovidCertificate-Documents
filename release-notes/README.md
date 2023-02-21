@@ -3,7 +3,7 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|30.01.2023@08:00||
+|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|27.02.2023@08:30||
 |[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|test|09.01.2023@14:00|:rocket:|
 |[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00|:rocket:|
 |[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|test|09.01.2023@14:00||
@@ -33,7 +33,7 @@
 |environment|release|date|
 |----|----|----|
 |test|4.11|08.02.2023@16:00|
-|prod|4.11|27.02.2023@08:15|
+|prod|4.11|27.02.2023@08:30|
 
 # 4.11.x
 * New Report A13 to check printing KPI
@@ -49,7 +49,7 @@
 |cc-management-ui|[4.11.0](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.11.0)|17.02.2023@14:00|
 |cc-notification-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.11.1)|16.02.2023@09:00|
 |cc-printing-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.11.1)|08.02.2023@16:00|
-|cc-report-service|4.11.2|17.02.2023@08:00|
+|cc-report-service|4.11.3|21.02.2023@14:00|
 
 # 4.10.x
 * New Vaccine VidPrevtyn Beta
