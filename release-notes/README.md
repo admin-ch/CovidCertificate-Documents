@@ -37,9 +37,8 @@
 
 # 4.11.x
 * New Report A13 to check printing KPI
-* Administrative functionality
-* Code quality according sonar
-
+* Removal of legacy roles
+* Leveraging role mapping to cc-backend-authorization library
 
 #### Services release details
 |service|release|last modified|
