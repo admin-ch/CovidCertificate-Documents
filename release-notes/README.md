@@ -49,7 +49,7 @@
 |cc-management-ui|[4.11.4](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.11.4)|22.02.2023@16:00|
 |cc-notification-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Notification-Service/releases/tag/4.11.1)|16.02.2023@09:00|
 |cc-printing-service|[4.11.1](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.11.1)|08.02.2023@16:00|
-|cc-report-service|4.11.3|21.02.2023@14:00|
+|cc-report-service|4.11.4|23.02.2023@12:00|
 
 # 4.10.x
 * New Vaccine VidPrevtyn Beta
