@@ -3,9 +3,11 @@
 ## History
 |release|environment|date|note|
 |----|----|----|----|
-|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|27.02.2023@08:30||
-|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|test|09.01.2023@14:00|:rocket:|
-|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00|:rocket:|
+|[4.12](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|27.03.2023@07:30||
+|[4.12](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|test|13.03.2023@12:00|:rocket:|
+|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|prod|27.02.2023@08:30|:rocket:|
+|[4.11](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#411x)|test|09.01.2023@14:00||
+|[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|prod|30.01.2023@08:00||
 |[4.10](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#410x)|test|09.01.2023@14:00||
 |[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|prod|19.12.2022@08:00||
 |[4.9](https://github.com/admin-ch/CovidCertificate-Documents/tree/main/release-notes#49x)|test|30.11.2022@12:00||
@@ -32,8 +34,19 @@
 ## Planned
 |environment|release|date|
 |----|----|----|
-|test|4.11|08.02.2023@16:00|
-|prod|4.11|27.02.2023@08:30|
+|test|4.12|13.03.2023@12:00|
+|prod|4.12|27.03.2023@07:30|
+
+# 4.12.x
+* Implementation of the removal of KPI data after two years of storage
+* Adjustment of reporting to data storage
+
+#### Services release details
+|service|release|last modified|
+|----|----|----|
+|cc-management-service|[4.12.0](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.12.0)|07.03.2023@11:00|
+|cc-printing-service|[4.12.0](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.12.0)|07.03.2023@11:00|
+|cc-report-service|4.12.0|07.03.2023@11:00|
 
 # 4.11.x
 * New Report A13 to check printing KPI
