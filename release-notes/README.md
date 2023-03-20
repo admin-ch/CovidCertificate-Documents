@@ -45,6 +45,7 @@
 |service|release|last modified|
 |----|----|----|
 |cc-management-service|[4.12.0](https://github.com/admin-ch/CovidCertificate-Management-Service/releases/tag/4.12.0)|07.03.2023@11:00|
+|cc-management-ui|[4.12.0](https://github.com/admin-ch/CovidCertificate-Management-UI/releases/tag/4.12.0)|20.03.2023@14:00|
 |cc-printing-service|[4.12.0](https://github.com/admin-ch/CovidCertificate-Printing-Service/releases/tag/4.12.0)|07.03.2023@11:00|
 |cc-report-service|4.12.0|07.03.2023@11:00|
 
