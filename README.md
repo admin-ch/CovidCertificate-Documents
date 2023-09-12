@@ -1,3 +1,7 @@
+⚠️ **_IMPORTANT UPDATE_** ⚠️
+
+Since 1<sup>st</sup> September 2023, the entire Swiss certificate system has definitively ceased operations. It is no longer possible to issue COVID certificates. The COVID Certificate app and COVID Certificate Check app are not being developed further. Therefore, the project’s source code was archived on GitHub. It remains available as a read-only project.
+
 # Swiss Covid Certificate - Documents
 
 ### Table of contents
